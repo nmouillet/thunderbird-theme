@@ -1,0 +1,44 @@
+/* Retouches de FluentBird pour Linux / KDE Plasma, importées par userChrome.css.
+   userChrome.css, Icons/ et Titlebar_Icons/ : FluentBird 1.1.4 tel que publié
+   (https://github.com/Deathbyteacup/fluentbird, licence MIT), à ne pas modifier :
+   les retouches vont ici, pour pouvoir reprendre une nouvelle version telle quelle. */
+
+/* Zone principale opaque : la transparence de FluentBird sert à l'effet Mica de Windows 11,
+   sous Linux elle laisse voir les fenêtres de derrière */
+:root:root #messengerBody {
+	opacity: 1 !important;
+}
+
+/* Menu ☰ (accès aux paramètres) affiché */
+:root:root #button-appmenu {
+	display: flex !important;
+}
+
+/* Fond opaque de la fenêtre et des barres que FluentBird laisse transparentes (#fff0).
+   Ce fichier est importé avant les règles de FluentBird : le préfixe :root:root rend les
+   sélecteurs plus spécifiques, pour qu'ils l'emportent sur ses !important */
+:root:root,
+:root:root #messengerWindow,
+:root:root #navigation-toolbox,
+:root:root #unifiedToolbar,
+:root:root #tabs-toolbar,
+:root:root #spacesToolbar {
+	background-color: var(--layout-background-1, Canvas) !important;
+}
+
+/* Onglet actif bien visible : fond teinté et trait bleu Outlook en bas */
+:root:root .tab-background[selected="true"] {
+	background-color: color-mix(in srgb, #0078d4 30%, var(--layout-background-1, Canvas)) !important;
+	border-bottom: 2px solid #0078d4 !important;
+}
+
+/* Messages non lus : fond teinté et liseré bleu Outlook à gauche */
+:root:root #threadTree[rows="thread-card"] .card-layout[data-properties~="unread"]:not(.selected) .card-container {
+	background-color: color-mix(in srgb, #0078d4 22%, var(--layout-background-1, Canvas)) !important;
+	border-inline-start: 4px solid #0078d4 !important;
+}
+
+/* Boutons réduire / agrandir / fermer écartés du bord droit */
+:root:root .titlebar-buttonbox-container {
+	margin-inline-end: 8px !important;
+}
